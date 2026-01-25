@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wshop-bash
+  namespace: wshop-xxx
+  labels:
+    app: wshop-bash
+spec:
+  containers:
+  - name: web-server
+    # image: default-route-openshift-image-registry.apps-crc.testing/openshift/bash:latest
+    image: default-route-openshift-image-registry.apps-crc.testing/openshift/python:latest

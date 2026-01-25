@@ -1,0 +1,7 @@
+kind: Project
+apiVersion: project.openshift.io/v1
+metadata:
+  name: ex-1
+  annotations:
+    openshift.io/description: "The project for the first application"
+    openshift.io/display-name: "app-display-name"

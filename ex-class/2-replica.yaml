@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ws-replicaset
+  namespace: wshop-rset
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wshop-app # This MUST match the template labels
+  template:         # <--- THIS IS THE POD TEMPLATE
+    metadata:
+      labels:
+        app: wshop-app
+    spec:
+      containers:
+      - name: web-server
+        image: image-registry.openshift-image-registry.svc:5000/openshift/httpd:latest
+        volumeMounts:
+        - name: html-storage
+          mountPath: /var/www/html
+        ports:
+        - containerPort: 8080
+      volumes:
+      - name: html-storage
+        emptyDir: {}

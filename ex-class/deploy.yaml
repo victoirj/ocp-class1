@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ws-deploy
+  namespace: ws-deploy
+  labels:
+    app: ws-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ws-deploy
+  template:
+    metadata:
+      labels:
+        app: ws-deploy   # must match .spec.selector.matchLabels
+    spec:
+      containers:
+        - name: webserver
+          image: default-route-openshift-image-registry.apps-crc.testing/openshift/httpd:latest
+          ports:
+            - containerPort: 8080

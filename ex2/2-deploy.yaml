@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wsdeploy
+  namespace: ex-2
+  labels:
+    app: wsdeploy
+spec:
+  replicas: 1 # You can increase this to scale your app
+  selector:
+    matchLabels:
+      app: wsdeploy # Must match the template labels below
+  template:
+    metadata:
+      labels:
+        app: wsdeploy # The Service will use this label to find the Pods
+    spec:
+      containers:
+      - name: webserver
+        image: default-route-openshift-image-registry.apps-crc.testing/openshift/httpd:latest
+        ports:
+        - containerPort: 8080

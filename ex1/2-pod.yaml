@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wspod
+  namespace: ex-1
+  labels:
+    app: wsapp # Crucial: Labels are how Services find Pods!
+spec:
+  containers:
+  - name: webserver
+    # image: image-registry.openshift-image-registry.svc:5000/openshift/httpd:latest
+    image: default-route-openshift-image-registry.apps-crc.testing/openshift/httpd:latest
+    ports:
+    - containerPort: 8080

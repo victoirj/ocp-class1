@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wshop-service
+  namespace: wshop-rset
+spec:
+  selector:
+    app: wshop-app
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080

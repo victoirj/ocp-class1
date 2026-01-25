@@ -1,0 +1,7 @@
+kind: Project
+apiVersion: project.openshift.io/v1
+metadata:
+  name: wshop-rset
+  annotations:
+    openshift.io/description: "The project for the replicaset"
+    openshift.io/display-name: "wshop-replicaset-name"

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workshop-app-v2
+  namespace: ex-helm
+  labels:
+    app: workshop
+    version: v2
+spec:
+  replicas: 1 # You can increase this to scale your app
+  selector:
+    matchLabels:
+      app: workshop # Must match the template labels below
+  template:
+    metadata:
+      labels:
+        app: workshop 
+        version: v2
+    spec:
+      containers:
+      - name: webserver
+        image: default-route-openshift-image-registry.apps-crc.testing/openshift/httpd:latest
+        volumeMounts:
+        - name: html-storage
+          mountPath: /var/www/html
+          submath: index.html
+        ports:
+        - containerPort: 8080
+      volumes:
+      - name: html-storage
+        configMap:
+          name: html-config-v2

@@ -1,0 +1,37 @@
+{{- range $key, $val := .Values.versions }}
+{{- if $val.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $.Release.Name }}-{{ $val.versionLabel }}
+  labels:
+    app: {{ $.Release.Name }}
+    version: {{ $val.versionLabel }}
+spec:
+  replicas: {{ $val.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ $.Release.Name }}
+      version: {{ $val.versionLabel }}
+  template:
+    metadata:
+      labels:
+        app: {{ $.Release.Name }}
+        version: {{ $val.versionLabel }}
+    spec:
+      containers:
+      - name: webserver
+        image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+        volumeMounts:
+        - name: html-volume
+          mountPath: /var/www/html/index.html
+          subPath: index.html
+        ports:
+        - containerPort: {{ $.Values.service.targetPort }}
+      volumes:
+      - name: html-volume
+        configMap:
+          name: {{ $.Release.Name }}-html-{{ $val.versionLabel }}
+---
+{{- end }}
+{{- end }}

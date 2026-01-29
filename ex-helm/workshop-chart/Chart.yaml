@@ -1,0 +1,10 @@
+apiVersion: v2
+name: workshop-chart
+description: A Helm chart for Jan's canary demo
+type: application
+
+# Chart version
+version: 0.1.0
+
+# application version 
+appVersion: "1.0.0"

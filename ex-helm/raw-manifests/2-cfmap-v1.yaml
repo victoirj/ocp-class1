@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: html-config-v1
+  namespace: ex-helm
+data:
+  index.html: |
+    <html> 
+      <h1> Helm page version 1</h1>
+      </br>
+    </html> 

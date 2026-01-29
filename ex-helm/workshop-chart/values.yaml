@@ -1,0 +1,21 @@
+image:
+  repository: default-route-openshift-image-registry.apps-crc.testing/openshift/httpd
+  tag: latest
+
+service:
+  port: 80
+  targetPort: 8080
+
+# Version-specific settings
+versions:
+  stable:
+    enabled: true
+    replicaCount: 1
+    versionLabel: "v1"
+    htmlContent: "<html><body><h1>VERSI VERSA 1 (STABLE)</h1></body></html>"
+  
+  canary:
+    enabled: false # We'll turn this to 'true' during the demo!
+    replicaCount: 1
+    versionLabel: "v2"
+    htmlContent: "<html><body><h1>VERSI VERSA 2 (CANARY)</h1></body></html>"

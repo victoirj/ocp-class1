@@ -1,0 +1,23 @@
+- Service mesh 3 was used for the testing
+- the namespaces istio-system and istio-cni were created (defaults)
+- Istio and IstioCNI were deployed in the respective namespaces
+- oc label namespace ex-3 istio.io/rev=default
+
+apiVersion: sailoperator.io/v1
+kind: Istio
+metadata:
+  name: default
+spec:
+  namespace: istio-system
+  updateStrategy:
+    inactiveRevisionDeletionGracePeriodSeconds: 30
+    type: InPlace
+  version: v1.26.2
+
+apiVersion: sailoperator.io/v1
+kind: IstioCNI
+metadata:
+  name: default
+spec:
+  namespace: istio-cni
+  version: v1.26.2

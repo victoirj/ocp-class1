@@ -1,0 +1,18 @@
+apiVersion: v2
+name: demo-helm
+description: Demo for helm
+type: application
+
+# This is the version of the Chart itself (Infrastructure version)
+version: 0.1.0
+
+# version of the Application 
+appVersion: "1.0.0"
+
+maintainers:
+  - name: Jan
+    email: jan.victoir@proximus.com
+
+annotations:
+  category: JustForDemo
+  performance-test-phase: "Initial Helm Migration"

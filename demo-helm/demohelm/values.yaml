@@ -1,0 +1,16 @@
+namespace: "drd-i"
+
+image:
+  repository: quay-enterprise.cluster.mgt.int.corp/repo-drd/drdauth
+  tag: 1.0.0
+  pullPolicy: IfNotPresent
+
+pullsecret: pxs-ereg-pull
+
+egress:
+  network: 29
+
+root: level0_value
+
+dir:
+  file: level2_value

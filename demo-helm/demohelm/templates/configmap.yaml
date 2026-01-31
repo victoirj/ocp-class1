@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-exercise
+  namespace: {{ .Release.Namespace }}
+data:
+  learned_today: "Helm Built-ins and Kustomize Wrappers"
+  user: "myself"
+  level0: {{ .Values.root }}
+  level1: {{ .Values.dir.file }}
+  network_id: {{ .Values.egress.network | quote }}
